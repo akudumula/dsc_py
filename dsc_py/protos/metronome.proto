@@ -10,8 +10,9 @@ message validatorRequest
 message validatorResponse
 {
     string result_hash = 1;
-    int32 block_time = 2;
-    double timer = 3;
+    int32 difficulty = 2;
+    int32 block_time = 3;
+    double timer = 4;
 }
 
 service metronome

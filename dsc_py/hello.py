@@ -50,7 +50,8 @@ if output["validator"]["proof_pow"]["enable"] == True:
 
 
     execute_command = f"./hash-search/blake3/Proof_of_work {fingerprint} {public_key} {threads} {block_time} {result_hash}"
-    subprocess.run(execute_command,shell=True,check=True)
+    result = subprocess.run(execute_command,capture_output=True,text=True,shell=True,check=True)
+    print(result.stdout.strip())
 
 elif output["validator"]["proof_pom"]["enable"] == True:
     threads = output["validator"]["proof_pom"]["threaads_hash"]

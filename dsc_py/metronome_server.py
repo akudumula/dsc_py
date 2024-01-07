@@ -17,6 +17,7 @@ class metronomeServicer(metronome_pb2_grpc.metronomeServicer):
         validator_response.result_hash = previous_hash_value
         validator_response.block_time =6
         validator_response.timer = 3.0
+        validator_response.difficulty = 24
         return validator_response
 
 

@@ -97,7 +97,7 @@ class blockchainServicer (blockchain_pb2_grpc.blockchainServicer):
         print(request)
 
         new_block_response = blockchain_pb2.new_block_response()
-        new_block_response.block_hash = "ABC"
+        new_block_response.block_hash = "ABCDEFGHIJ"
         new_block_response.blockID = 2
 
         return new_block_response
