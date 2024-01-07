@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package adarsh.dsc;
+
+message validatorRequest
+{
+    int32 request = 1;
+}
+
+message validatorResponse
+{
+    string result_hash = 1;
+    int32 block_time = 2;
+    double timer = 3;
+}
+
+service metronome
+{
+    rpc get_details(validatorRequest) returns (validatorResponse);
+}

@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package adarsh.dsc;
+
+message sendRequest 
+{
+    string sender_public_address = 1;
+    string recepeint_pubic_address = 2;
+    double value = 3;
+    int32 timestamp = 4;
+    string transaction_id = 5;
+    string signature = 6;
+}
+
+message sendReply 
+{
+    string reply =1;
+}
+
+message transactionRequest 
+{
+    string transaction_id = 1;
+}
+
+message transactionsRequest
+{
+    string wallet_public_key = 1;
+}
+
+message transactionReply
+{
+    string status = 1;
+}
+
+service pool
+{
+    rpc send (sendRequest) returns (stream sendReply);
+    rpc transaction (transactionRequest) returns (transactionReply);
+    rpc transactions (transactionsRequest) returns (transactionReply);
+}

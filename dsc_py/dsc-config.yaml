@@ -1,0 +1,26 @@
+validator:
+  fingerprint: f75c5b0f-f7ce-46bd-9416-9441b9fbbe4c
+  proof_pom:
+    enable: false
+    memory: 1G
+    threads_hash: 2
+  proof_pos:
+    enable: false
+  proof_pow:
+    enable: true
+    threaads_hash: 2
+  public_key: abcd100001
+wallet:
+  public_key: 7atN5eHkMgLHASNQz7WBdkVecKy5QzuDmJJ1akhiBqMW
+pool:
+  server: localhost
+  port: 10001
+  threads: 2
+blockchain:
+  server: localhost
+  port: 10002
+  threads: 2
+metronome:
+  server: localhost
+  port: 10003
+  threads: 2

@@ -1,0 +1,65 @@
+syntax = "proto3";
+
+package adarsh.dsc;
+
+message balanceRequest
+{
+    string wallet_public_key = 1;
+}
+
+message balanceReply
+{
+    double value = 1;
+}
+
+message blockRequest
+{
+    int32 block_size = 1;
+    block_header header = 2;
+    int32 transaction_counter = 3;
+    string reserved = 4;
+    repeated transaction transactions= 5;
+}
+
+message block_header
+{
+    int32 version =1;
+    string previous_block_hash = 2;
+    int32 blockID = 3;
+    int32 timestamp = 4;
+    int32 difficulty = 5;
+    string nonce = 6;
+}
+
+message transaction
+{
+    string sender_public_address = 1;
+    string recepeint_pubic_address = 2;
+    double value = 3;
+    int32 timestamp = 4;
+    string transaction_id = 5;
+    string signature = 6;
+}
+
+message new_block_response
+{
+    string block_hash = 1;
+    int32 blockID = 2;
+}
+
+message new_block_request
+{
+    int32 request = 1;
+}
+
+message response
+{
+
+}
+
+service blockchain
+{
+    rpc balance(balanceRequest) returns (balanceReply);
+    rpc block_creation (blockRequest) returns (response);
+    rpc metronome_blockHash (new_block_request) returns (new_block_response);
+}
