@@ -14,7 +14,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0fmetronome.proto\x12\nadarsh.dsc\"#\n\x10validatorRequest\x12\x0f\n\x07request\x18\x01 \x01(\x05\"_\n\x11validatorResponse\x12\x13\n\x0bresult_hash\x18\x01 \x01(\t\x12\x12\n\ndifficulty\x18\x02 \x01(\x05\x12\x12\n\nblock_time\x18\x03 \x01(\x05\x12\r\n\x05timer\x18\x04 \x01(\x01\x32W\n\tmetronome\x12J\n\x0bget_details\x12\x1c.adarsh.dsc.validatorRequest\x1a\x1d.adarsh.dsc.validatorResponseb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0fmetronome.proto\x12\nadarsh.dsc\"#\n\x10validatorRequest\x12\x0f\n\x07request\x18\x01 \x01(\x05\"p\n\x11validatorResponse\x12\x13\n\x0bresult_hash\x18\x01 \x01(\t\x12\x12\n\ndifficulty\x18\x02 \x01(\x05\x12\x12\n\nblock_time\x18\x03 \x01(\x05\x12\r\n\x05timer\x18\x04 \x01(\t\x12\x0f\n\x07\x62lockID\x18\x05 \x01(\x05\"\xda\x01\n\x15\x62lockRequestMetronome\x12\x12\n\nblock_size\x18\x01 \x01(\x05\x12\x31\n\x06header\x18\x02 \x01(\x0b\x32!.adarsh.dsc.block_headerMetronome\x12\x1b\n\x13transaction_counter\x18\x03 \x01(\x05\x12\x10\n\x08reserved\x18\x04 \x01(\t\x12\x36\n\x0ctransactions\x18\x05 \x03(\x0b\x32 .adarsh.dsc.transactionMetronome\x12\x13\n\x0b\x66ingerprint\x18\x06 \x01(\t\"\x8c\x01\n\x15\x62lock_headerMetronome\x12\x0f\n\x07version\x18\x01 \x01(\x05\x12\x1b\n\x13previous_block_hash\x18\x02 \x01(\t\x12\x0f\n\x07\x62lockID\x18\x03 \x01(\x05\x12\x11\n\ttimestamp\x18\x04 \x01(\x05\x12\x12\n\ndifficulty\x18\x05 \x01(\x05\x12\r\n\x05nonce\x18\x06 \x01(\t\"\xa3\x01\n\x14transactionMetronome\x12\x1d\n\x15sender_public_address\x18\x01 \x01(\t\x12\x1f\n\x17recepeint_pubic_address\x18\x02 \x01(\t\x12\r\n\x05value\x18\x03 \x01(\x01\x12\x11\n\ttimestamp\x18\x04 \x01(\x05\x12\x16\n\x0etransaction_id\x18\x05 \x01(\t\x12\x11\n\tsignature\x18\x06 \x01(\t\"%\n\x11responseMetronome\x12\x10\n\x08response\x18\x01 \x01(\t\"k\n\x13validatorWinRequest\x12\x13\n\x0b\x66ingerprint\x18\x01 \x01(\t\x12\x16\n\x0epublic_address\x18\x02 \x01(\t\x12\r\n\x05nonce\x18\x03 \x01(\x05\x12\x18\n\x10hashes_generated\x18\x04 \x01(\x05\"<\n\x14validatorWinResponse\x12\x15\n\rvalidator_win\x18\x01 \x01(\x05\x12\r\n\x05timer\x18\x02 \x01(\t2\x89\x02\n\tmetronome\x12J\n\x0bget_details\x12\x1c.adarsh.dsc.validatorRequest\x1a\x1d.adarsh.dsc.validatorResponse\x12R\n\rvalidator_win\x12\x1f.adarsh.dsc.validatorWinRequest\x1a .adarsh.dsc.validatorWinResponse\x12\\\n\x18\x62lock_creation_validator\x12!.adarsh.dsc.blockRequestMetronome\x1a\x1d.adarsh.dsc.responseMetronomeb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -24,7 +24,19 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _globals['_VALIDATORREQUEST']._serialized_start=31
   _globals['_VALIDATORREQUEST']._serialized_end=66
   _globals['_VALIDATORRESPONSE']._serialized_start=68
-  _globals['_VALIDATORRESPONSE']._serialized_end=163
-  _globals['_METRONOME']._serialized_start=165
-  _globals['_METRONOME']._serialized_end=252
+  _globals['_VALIDATORRESPONSE']._serialized_end=180
+  _globals['_BLOCKREQUESTMETRONOME']._serialized_start=183
+  _globals['_BLOCKREQUESTMETRONOME']._serialized_end=401
+  _globals['_BLOCK_HEADERMETRONOME']._serialized_start=404
+  _globals['_BLOCK_HEADERMETRONOME']._serialized_end=544
+  _globals['_TRANSACTIONMETRONOME']._serialized_start=547
+  _globals['_TRANSACTIONMETRONOME']._serialized_end=710
+  _globals['_RESPONSEMETRONOME']._serialized_start=712
+  _globals['_RESPONSEMETRONOME']._serialized_end=749
+  _globals['_VALIDATORWINREQUEST']._serialized_start=751
+  _globals['_VALIDATORWINREQUEST']._serialized_end=858
+  _globals['_VALIDATORWINRESPONSE']._serialized_start=860
+  _globals['_VALIDATORWINRESPONSE']._serialized_end=920
+  _globals['_METRONOME']._serialized_start=923
+  _globals['_METRONOME']._serialized_end=1188
 # @@protoc_insertion_point(module_scope)

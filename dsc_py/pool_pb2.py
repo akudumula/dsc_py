@@ -14,7 +14,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\npool.proto\x12\nadarsh.dsc\"\x9a\x01\n\x0bsendRequest\x12\x1d\n\x15sender_public_address\x18\x01 \x01(\t\x12\x1f\n\x17recepeint_pubic_address\x18\x02 \x01(\t\x12\r\n\x05value\x18\x03 \x01(\x01\x12\x11\n\ttimestamp\x18\x04 \x01(\x05\x12\x16\n\x0etransaction_id\x18\x05 \x01(\t\x12\x11\n\tsignature\x18\x06 \x01(\t\"\x1a\n\tsendReply\x12\r\n\x05reply\x18\x01 \x01(\t\",\n\x12transactionRequest\x12\x16\n\x0etransaction_id\x18\x01 \x01(\t\"0\n\x13transactionsRequest\x12\x19\n\x11wallet_public_key\x18\x01 \x01(\t\"\"\n\x10transactionReply\x12\x0e\n\x06status\x18\x01 \x01(\t2\xdc\x01\n\x04pool\x12\x38\n\x04send\x12\x17.adarsh.dsc.sendRequest\x1a\x15.adarsh.dsc.sendReply0\x01\x12K\n\x0btransaction\x12\x1e.adarsh.dsc.transactionRequest\x1a\x1c.adarsh.dsc.transactionReply\x12M\n\x0ctransactions\x12\x1f.adarsh.dsc.transactionsRequest\x1a\x1c.adarsh.dsc.transactionReplyb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\npool.proto\x12\nadarsh.dsc\"\x9a\x01\n\x0bsendRequest\x12\x1d\n\x15sender_public_address\x18\x01 \x01(\t\x12\x1f\n\x17recepeint_pubic_address\x18\x02 \x01(\t\x12\r\n\x05value\x18\x03 \x01(\x01\x12\x11\n\ttimestamp\x18\x04 \x01(\x05\x12\x16\n\x0etransaction_id\x18\x05 \x01(\t\x12\x11\n\tsignature\x18\x06 \x01(\t\"\x1a\n\tsendReply\x12\r\n\x05reply\x18\x01 \x01(\t\",\n\x12transactionRequest\x12\x16\n\x0etransaction_id\x18\x01 \x01(\t\"0\n\x13transactionsRequest\x12\x19\n\x11wallet_public_key\x18\x01 \x01(\t\"\"\n\x10transactionReply\x12\x0e\n\x06status\x18\x01 \x01(\t\".\n\x1btransferTransactionsRequest\x12\x0f\n\x07request\x18\x01 \x01(\x05\"D\n\x13transferTransaction\x12-\n\x0ctransactions\x18\x01 \x03(\x0b\x32\x17.adarsh.dsc.sendRequest\",\n\x11validator_confirm\x12\x17\n\x0ftransaction_ids\x18\x01 \x03(\t\".\n\x1avalidator_confirm_response\x12\x10\n\x08response\x18\x01 \x01(\t2\x98\x03\n\x04pool\x12\x38\n\x04send\x12\x17.adarsh.dsc.sendRequest\x1a\x15.adarsh.dsc.sendReply0\x01\x12K\n\x0btransaction\x12\x1e.adarsh.dsc.transactionRequest\x1a\x1c.adarsh.dsc.transactionReply\x12M\n\x0ctransactions\x12\x1f.adarsh.dsc.transactionsRequest\x1a\x1c.adarsh.dsc.transactionReply\x12`\n\x14\x63onfirm_transactions\x12\'.adarsh.dsc.transferTransactionsRequest\x1a\x1f.adarsh.dsc.transferTransaction\x12X\n\x0fmove_to_confirm\x12\x1d.adarsh.dsc.validator_confirm\x1a&.adarsh.dsc.validator_confirm_responseb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -31,6 +31,14 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _globals['_TRANSACTIONSREQUEST']._serialized_end=305
   _globals['_TRANSACTIONREPLY']._serialized_start=307
   _globals['_TRANSACTIONREPLY']._serialized_end=341
-  _globals['_POOL']._serialized_start=344
-  _globals['_POOL']._serialized_end=564
+  _globals['_TRANSFERTRANSACTIONSREQUEST']._serialized_start=343
+  _globals['_TRANSFERTRANSACTIONSREQUEST']._serialized_end=389
+  _globals['_TRANSFERTRANSACTION']._serialized_start=391
+  _globals['_TRANSFERTRANSACTION']._serialized_end=459
+  _globals['_VALIDATOR_CONFIRM']._serialized_start=461
+  _globals['_VALIDATOR_CONFIRM']._serialized_end=505
+  _globals['_VALIDATOR_CONFIRM_RESPONSE']._serialized_start=507
+  _globals['_VALIDATOR_CONFIRM_RESPONSE']._serialized_end=553
+  _globals['_POOL']._serialized_start=556
+  _globals['_POOL']._serialized_end=964
 # @@protoc_insertion_point(module_scope)

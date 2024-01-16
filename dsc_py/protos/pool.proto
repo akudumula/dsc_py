@@ -32,9 +32,32 @@ message transactionReply
     string status = 1;
 }
 
+message transferTransactionsRequest
+{
+    int32 request = 1;
+}
+
+
+message transferTransaction
+{
+    repeated sendRequest transactions = 1;
+}
+
+message validator_confirm
+{
+    repeated string transaction_ids = 1;
+}
+
+message validator_confirm_response
+{
+    string response = 1;
+}
+
 service pool
 {
     rpc send (sendRequest) returns (stream sendReply);
     rpc transaction (transactionRequest) returns (transactionReply);
     rpc transactions (transactionsRequest) returns (transactionReply);
+    rpc confirm_transactions (transferTransactionsRequest) returns ( transferTransaction);
+    rpc move_to_confirm (validator_confirm) returns (validator_confirm_response);
 }

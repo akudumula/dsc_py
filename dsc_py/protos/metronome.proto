@@ -12,10 +12,62 @@ message validatorResponse
     string result_hash = 1;
     int32 difficulty = 2;
     int32 block_time = 3;
-    double timer = 4;
+    string timer = 4;
+    int32 blockID = 5;
+}
+
+message blockRequestMetronome
+{
+    int32 block_size = 1;
+    block_headerMetronome header = 2;
+    int32 transaction_counter = 3;
+    string reserved = 4;
+    repeated transactionMetronome transactions= 5;
+    string fingerprint = 6;
+}
+
+message block_headerMetronome
+{
+    int32 version =1;
+    string previous_block_hash = 2;
+    int32 blockID = 3;
+    int32 timestamp = 4;
+    int32 difficulty = 5;
+    string nonce = 6;
+}
+
+message transactionMetronome
+{
+    string sender_public_address = 1;
+    string recepeint_pubic_address = 2;
+    double value = 3;
+    int32 timestamp = 4;
+    string transaction_id = 5;
+    string signature = 6;
+}
+
+message responseMetronome
+{
+    string response = 1;
+}
+
+message validatorWinRequest
+{
+    string fingerprint = 1;
+    string public_address = 2;
+    int32 nonce = 3;
+    int32 hashes_generated = 4;
+}
+
+message validatorWinResponse
+{
+    int32 validator_win = 1;
+    string timer = 2;
 }
 
 service metronome
 {
     rpc get_details(validatorRequest) returns (validatorResponse);
+    rpc validator_win(validatorWinRequest) returns (validatorWinResponse);
+    rpc block_creation_validator (blockRequestMetronome) returns (responseMetronome);
 }

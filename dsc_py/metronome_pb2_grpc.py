@@ -19,12 +19,34 @@ class metronomeStub(object):
                 request_serializer=metronome__pb2.validatorRequest.SerializeToString,
                 response_deserializer=metronome__pb2.validatorResponse.FromString,
                 )
+        self.validator_win = channel.unary_unary(
+                '/adarsh.dsc.metronome/validator_win',
+                request_serializer=metronome__pb2.validatorWinRequest.SerializeToString,
+                response_deserializer=metronome__pb2.validatorWinResponse.FromString,
+                )
+        self.block_creation_validator = channel.unary_unary(
+                '/adarsh.dsc.metronome/block_creation_validator',
+                request_serializer=metronome__pb2.blockRequestMetronome.SerializeToString,
+                response_deserializer=metronome__pb2.responseMetronome.FromString,
+                )
 
 
 class metronomeServicer(object):
     """Missing associated documentation comment in .proto file."""
 
     def get_details(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def validator_win(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def block_creation_validator(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -37,6 +59,16 @@ def add_metronomeServicer_to_server(servicer, server):
                     servicer.get_details,
                     request_deserializer=metronome__pb2.validatorRequest.FromString,
                     response_serializer=metronome__pb2.validatorResponse.SerializeToString,
+            ),
+            'validator_win': grpc.unary_unary_rpc_method_handler(
+                    servicer.validator_win,
+                    request_deserializer=metronome__pb2.validatorWinRequest.FromString,
+                    response_serializer=metronome__pb2.validatorWinResponse.SerializeToString,
+            ),
+            'block_creation_validator': grpc.unary_unary_rpc_method_handler(
+                    servicer.block_creation_validator,
+                    request_deserializer=metronome__pb2.blockRequestMetronome.FromString,
+                    response_serializer=metronome__pb2.responseMetronome.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -62,5 +94,39 @@ class metronome(object):
         return grpc.experimental.unary_unary(request, target, '/adarsh.dsc.metronome/get_details',
             metronome__pb2.validatorRequest.SerializeToString,
             metronome__pb2.validatorResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def validator_win(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/adarsh.dsc.metronome/validator_win',
+            metronome__pb2.validatorWinRequest.SerializeToString,
+            metronome__pb2.validatorWinResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def block_creation_validator(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/adarsh.dsc.metronome/block_creation_validator',
+            metronome__pb2.blockRequestMetronome.SerializeToString,
+            metronome__pb2.responseMetronome.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

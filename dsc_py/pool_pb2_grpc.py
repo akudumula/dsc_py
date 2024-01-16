@@ -29,6 +29,16 @@ class poolStub(object):
                 request_serializer=pool__pb2.transactionsRequest.SerializeToString,
                 response_deserializer=pool__pb2.transactionReply.FromString,
                 )
+        self.confirm_transactions = channel.unary_unary(
+                '/adarsh.dsc.pool/confirm_transactions',
+                request_serializer=pool__pb2.transferTransactionsRequest.SerializeToString,
+                response_deserializer=pool__pb2.transferTransaction.FromString,
+                )
+        self.move_to_confirm = channel.unary_unary(
+                '/adarsh.dsc.pool/move_to_confirm',
+                request_serializer=pool__pb2.validator_confirm.SerializeToString,
+                response_deserializer=pool__pb2.validator_confirm_response.FromString,
+                )
 
 
 class poolServicer(object):
@@ -52,6 +62,18 @@ class poolServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def confirm_transactions(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def move_to_confirm(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_poolServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -69,6 +91,16 @@ def add_poolServicer_to_server(servicer, server):
                     servicer.transactions,
                     request_deserializer=pool__pb2.transactionsRequest.FromString,
                     response_serializer=pool__pb2.transactionReply.SerializeToString,
+            ),
+            'confirm_transactions': grpc.unary_unary_rpc_method_handler(
+                    servicer.confirm_transactions,
+                    request_deserializer=pool__pb2.transferTransactionsRequest.FromString,
+                    response_serializer=pool__pb2.transferTransaction.SerializeToString,
+            ),
+            'move_to_confirm': grpc.unary_unary_rpc_method_handler(
+                    servicer.move_to_confirm,
+                    request_deserializer=pool__pb2.validator_confirm.FromString,
+                    response_serializer=pool__pb2.validator_confirm_response.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -128,5 +160,39 @@ class pool(object):
         return grpc.experimental.unary_unary(request, target, '/adarsh.dsc.pool/transactions',
             pool__pb2.transactionsRequest.SerializeToString,
             pool__pb2.transactionReply.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def confirm_transactions(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/adarsh.dsc.pool/confirm_transactions',
+            pool__pb2.transferTransactionsRequest.SerializeToString,
+            pool__pb2.transferTransaction.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def move_to_confirm(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/adarsh.dsc.pool/move_to_confirm',
+            pool__pb2.validator_confirm.SerializeToString,
+            pool__pb2.validator_confirm_response.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

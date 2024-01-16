@@ -21,7 +21,7 @@ struct hash_input
 char *fingerprint;
 char *public_key;
 int threads_count;
-int block_time;
+double block_time;
 char *hash_value;
 long nonce=-1;
 long hashes_generated=0;
@@ -64,7 +64,7 @@ void *generate_hashes(void *arg)
     uint8_t *hash_result = (uint8_t *)malloc(sizeof(uint8_t) * 24);
     struct timeval start, current;
     double elapsedTime = 0.0;
-    const double targetTime = 6.0; // Duration in seconds for each thread
+    double targetTime = block_time; // Duration in seconds for each thread
 
     //int tid = *((int *)threadId);
 
@@ -112,7 +112,7 @@ int main(int argc, char *argv[])
 
     //access number of threads and block_time
     threads_count = atoi(argv[3]);
-    block_time = atoi(argv[4]);
+    block_time = atof(argv[4]);
 
     //access hash
     hash_value = argv[5];

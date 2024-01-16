@@ -19,6 +19,7 @@ message blockRequest
     int32 transaction_counter = 3;
     string reserved = 4;
     repeated transaction transactions= 5;
+    string fingerprint = 6;
 }
 
 message block_header

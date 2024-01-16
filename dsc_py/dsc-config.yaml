@@ -1,5 +1,27 @@
-validator:
+validator1:
   fingerprint: f75c5b0f-f7ce-46bd-9416-9441b9fbbe4c
+  proof_pom:
+    enable: false
+    memory: 1G
+    threads_hash: 2
+  proof_pos:
+    enable: false
+    threads_hash: 2
+    disk: 10G
+    buckets: 256
+    cup_size: 32769
+    #hash_size: 24
+    #nonce_size: 8
+    #memory: buckets*cup_size*(hash_size+nonce_size) ~ 256MB
+    #disk: buckets*cup_size*cups_per_bucket*(hash_size+nonce_size)~10GB
+    threads_io: 1
+    vault: ~/dsc-pos.vault
+  proof_pow:
+    enable: true
+    threads_hash: 4
+  public_key: abcd100001
+validator2:
+  fingerprint: g86d6c1g-g8df-57ce-0527-0552c0dccd5d
   proof_pom:
     enable: false
     memory: 1G
@@ -8,8 +30,8 @@ validator:
     enable: false
   proof_pow:
     enable: true
-    threaads_hash: 2
-  public_key: abcd100001
+    threads_hash: 4
+  public_key: 7atN5eHkMgLHASNQz7WBdkVecKy5QzuDmJJ1akhiBqMW
 wallet:
   public_key: 7atN5eHkMgLHASNQz7WBdkVecKy5QzuDmJJ1akhiBqMW
 pool:

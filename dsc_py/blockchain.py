@@ -1,12 +1,15 @@
 from concurrent import futures
 import time
-
+import blake3
+import blake3
 import grpc
 import blockchain_pb2
 import blockchain_pb2_grpc
 import struct
 import yaml
 from datetime import datetime
+import pickle
+import base64
 
 # class transaction:
 #     def __init__(self,sender,recepient,value,timestamp,transaction_id,signature):
@@ -74,31 +77,57 @@ class block:
 
     def return_block_header(self):
         return self.block_header
+    
+    def serialize(self):
+        # Serialize the block object
+        serialized_block = pickle.dumps(self)
+        return serialized_block
+
+    def hash_block(self):
+        # Serialize the block
+        serialized_block = self.serialize()
+
+        # Hash the serialized block using BLAKE3
+        hasher = blake3.blake3()
+        hasher.update(serialized_block)
+        block_hash = hasher.digest()
+
+        return block_hash
         
 
 class blockchainServicer (blockchain_pb2_grpc.blockchainServicer):
     def balance(self, request, context):
-        print("Balance request made")
-        print(request)
+        # print("Balance request made")
+        # print(request)
 
         balance_reply = blockchain_pb2.balanceReply()
-        balance_reply.value = 0.0
+        balance_reply.value = return_balance(request.wallet_public_key)
 
         return balance_reply
     def block_creation(self, request, context):
-        print("metronome Request recieved")
-        print(request)
+        global block_chain
+        # print("metronome Request recieved")
+        # print(request)
 
         block_response = blockchain_pb2.response()
+        block_size = request.block_size
+        block_header1 = block_header(request.header.version,request.header.previous_block_hash,request.header.blockID,request.header.timestamp,request.header.difficulty,request.header.nonce)
+        transaction_counter = request.transaction_counter
+        reserved = request.reserved
+        block_chain.append(create_block(block_size,block_header1,transaction_counter,reserved,[]))
+        if (request.header.nonce!="nonce"):
+            log_message(f"Block {request.header.blockID} created by validator with nonce: {request.header.nonce}")
+        else:
+            log_message(f"Block {request.header.blockID} created by metronome")
         return block_response
     
     def metronome_blockHash(self, request, context):
-        print("metronome Request recieved")
-        print(request)
+        # print("metronome Request recieved")
+        # print(request)
 
         new_block_response = blockchain_pb2.new_block_response()
-        new_block_response.block_hash = "ABCDEFGHIJ"
-        new_block_response.blockID = 2
+        new_block_response.block_hash = base64.b64encode((block_chain[len(block_chain)-1]).hash_block()).decode('utf-8')[:24]
+        new_block_response.blockID = block_chain[len(block_chain)-1].block_header.blockID
 
         return new_block_response
 
@@ -143,7 +172,9 @@ def retrieve_all_transactions(public_address):
     
     return transactions
 
-
+def create_block(block_size,block_header,transaction_count,reserved, transactions):
+    block_bucket = block(block_size,block_header,transaction_count,reserved,transactions)
+    return block_bucket
 
 def create_genesis_block():
     genesis_block = block(block_size=0,block_header=block_header(version=1,previous_block_hash="",blockID=0,timestamp=0,difficulty=30,nonce=0),transaction_count=0,reserved="",transactions=[])
@@ -176,4 +207,5 @@ def serve():
     server.wait_for_termination()
 
 if __name__ == "__main__":
+    block_chain.append(create_genesis_block())
     serve()
