@@ -1,0 +1,30 @@
+wallet1:
+  public_key: Fi5FKhErPCeDMitBUqsUGhetLaKEGdsLa82dY3m884Be
+wallet2:
+  public_key: ABaB4ymwtTGPvFbXRdquPcV5AzyuZnX1PxXwRCBmWYGC
+wallet3:
+  public_key: 5uCbpEGZ3DGUfYasv1UiW6Pas7Hj65JMqgqRmU3jZ4gc
+wallet4:
+  public_key: 9R7ENL8DrZ6URti3Vt98f4xWLWBpyE4rPpVjmmhHYtXv
+wallet5:
+  public_key: 7HesZptjiDMHjGsT2vCErgNxHw7bHS1bVkcMXrqNHMEX
+wallet6:
+  public_key: 7QRiP3uRxvbq1qCJ2SJULJkJkLdq9Twse6RHt5V2bpeJ
+wallet7:
+  public_key: 8xoX8jJcii7Yvwcqr1M9eWqF9fpPrS977yxsiaK75Ggh
+wallet8:
+  public_key: F7rVeE1Lct6EqW6xbtbhuhwajT16LdAcf3VpzPLi2U2q
+
+pool:
+  server: localhost
+  port: 10001
+  threads: 2
+blockchain:
+  server: localhost
+  port: 10002
+  threads: 2
+metronome:
+  server: localhost
+  port: 10003
+  threads: 2
+
